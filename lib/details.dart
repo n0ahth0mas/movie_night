@@ -21,7 +21,7 @@ class DetailsState extends State<Details> {
               Center(
                   child: Image.network(
                       "https://cdn.shopify.com/s/files/1/1148/8924/products/MPW-115495-a_1024x1024.jpg?v=1571439886",
-                      width: 300)),
+                      height: 450)),
               Center(
                 child: Container(
                   padding: EdgeInsets.all(10),
