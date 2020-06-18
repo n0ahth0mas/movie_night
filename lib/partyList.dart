@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_night/partyDetails.dart';
 
 class Party extends StatefulWidget {
   @override
@@ -20,11 +21,14 @@ class PartyState extends State<Party> {
   }
 
   Widget _partyRow(String name) {
-    return Card(
+    return InkWell(
+      onTap: () =>  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>  PartyDetails())),
+      child: Card(
         child: Container(
-      padding: EdgeInsets.all(10),
-      child: Text(name, style: Theme.of(context).textTheme.headline6),
-    ));
+        padding: EdgeInsets.all(10),
+        child: Text(name, style: Theme.of(context).textTheme.headline6),
+    )));
   }
 
   @override

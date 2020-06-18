@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_night/partyList.dart';
+import 'package:movie_night/watchlist.dart';
 
 class Layout extends StatefulWidget {
   @override
@@ -12,10 +13,8 @@ class LayoutState extends State<Layout> {
     Party(),
     Container(
       child: Text("hello2"),
-    ),    
-    Container(
-      child: Text("hello3"),
     ),
+    Watchlist(), 
   ];
 
   @override
