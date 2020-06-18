@@ -13,7 +13,7 @@ class PartyDetailsState extends State<PartyDetails> {
   bool rolled = false;
   bool once = true;
 
-  
+  //the random button. this ensures that the button can only be pressed once per session
   String randMovie() {
     String src;
     if (!rolled & once) {
@@ -74,7 +74,7 @@ class PartyDetailsState extends State<PartyDetails> {
                 onTap: () => print("testing")),
             SpeedDialChild(
                 child: Icon(Icons.school),
-                label: "Testing2",
+                label: "View Party Watchlist",
                 onTap: () => print("testing2")),
             SpeedDialChild(
                 child: Icon(Icons.question_answer),
