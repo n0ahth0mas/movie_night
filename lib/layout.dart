@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_night/partyList.dart';
+import 'package:movie_night/user.dart';
 import 'package:movie_night/watchlist.dart';
 
 class Layout extends StatefulWidget {
@@ -9,13 +10,20 @@ class Layout extends StatefulWidget {
 
 class LayoutState extends State<Layout> {
   int selectedIndex = 0;
-  final List<Widget> _section = [
-    Party(),
-    Watchlist(),
-  ];
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, User> rcvdData =
+        ModalRoute.of(context).settings.arguments;
+
+    User user = rcvdData["user"];
+    
+    final List<Widget> _section = [
+      PartyList(),
+      Watchlist(),
+  ];
+
+
     return Scaffold(
       appBar: AppBar(
         title: FlutterLogo(
@@ -27,7 +35,7 @@ class LayoutState extends State<Layout> {
       //Think about expanding the bottom nav with this https://codewithandrea.com/articles/2018-09-13-bottom-bar-navigation-with-fab/
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () { },
+        onPressed: () {},
         tooltip: 'Increment',
         child: Icon(Icons.add),
         elevation: 2.0,

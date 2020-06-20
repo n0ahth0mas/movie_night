@@ -31,9 +31,12 @@ class PartyDetailsState extends State<PartyDetails> {
       "https://i.ya-webdesign.com/images/question-mark-png-clear-background-4.png";
   @override
   Widget build(BuildContext context) {
+    final Map<String, Object> rcvdData =
+        ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
         appBar: AppBar(
-          title: Text("Party Details"),
+          title: Text("${rcvdData['name']}"),
         ),
         body: SingleChildScrollView(
             child: Column(
@@ -69,13 +72,13 @@ class PartyDetailsState extends State<PartyDetails> {
           shape: CircleBorder(),
           children: [
             SpeedDialChild(
-                child: Icon(Icons.add),
-                label: "Testing",
+                child: Icon(Icons.person),
+                label: "Participants",
                 onTap: () => print("testing")),
             SpeedDialChild(
                 child: Icon(Icons.school),
-                label: "View Party Watchlist",
-                onTap: () => print("testing2")),
+                label: "Party Watchlist",
+                onTap: () => Navigator.pushNamed(context, '/partyWatchList')),
             SpeedDialChild(
                 child: Icon(Icons.question_answer),
                 label: "Randomize Movie",
