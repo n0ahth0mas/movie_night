@@ -33,7 +33,7 @@ class DetailsState extends State<Details> {
 //add some sort of deletion in firebase? or pass whole list through?
   _deletelist(User user, Movie movie) {
     user.deleteFromWatchlist(movie);
-    //Navigator.popUntil(context, ModalRoute.withName('/watchlist'));
+    Navigator.popUntil(context, ModalRoute.withName('/watchlist'));
     Navigator.pushReplacementNamed(context, '/watchlist', arguments: {"user":user});
   }
 
