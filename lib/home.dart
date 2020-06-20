@@ -14,16 +14,17 @@ class Home extends StatefulWidget {
 class HomeState extends State<Home> {
   final textController = TextEditingController();
   final imgs = ["bg1.png", "bg2.png", "bg3.png", "bg4.png"];
+  List<Party> watchParties;
 
   void dispose() {
     textController.dispose();
     super.dispose();
   }
 
-  Widget _actions(List<Movie> watchlist) {
+  Widget _actions(User user) {
     return GFButton(
       onPressed: () => Navigator.pushNamed(context, '/watchlist',
-          arguments: {"watchList": watchlist}),
+          arguments: {"user": user}),
       text: "View Watchlist",
       shape: GFButtonShape.pills,
       fullWidthButton: true,
@@ -124,19 +125,29 @@ class HomeState extends State<Home> {
             ]));
   }
 
+  Party existingParty = Party("existing party", "abc");
+
   //add more functionality with a more defined system
   _joinparty(User user, String code) {
-    print(code);
+    if (code == existingParty.code) {
+      existingParty.addUserToParty(user);
+      _refreshPartyList(user);
+    } else {
+      print("no");
+    }
     Navigator.of(context).pop();
     textController.clear();
   }
 
-  //important -> next thing to do is to learn about state, and update state when a party is created
+  _refreshPartyList(User user) {
+    setState(() {
+      watchParties = user.parties;
+    });
+  }
+
   _createParty(User user, String name) {
     Party.withUser(name, user, "abc");
-    for (var party in user.parties) {
-      print(party.name);
-    }
+    _refreshPartyList(user);
     Navigator.of(context).pop();
     textController.clear();
   }
@@ -167,17 +178,6 @@ class HomeState extends State<Home> {
     );
     showCupertinoModalPopup(context: context, builder: (context) => action);
   }
- /*
-  List<Party> _userParties(User user, List<Party> partyList) {
-    List<Party> memberList = [];
-    for (var party in partyList) {
-      if (party.userIsMember(user)) {
-        memberList.add(party);
-      }
-    }
-    return memberList;
-  }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -186,6 +186,8 @@ class HomeState extends State<Home> {
 
     User user = rcvdData["user"];
     //List<Party> partyList = _userParties(user, rcvdData["partyList"]);
+
+    watchParties = user.parties;
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -206,7 +208,7 @@ class HomeState extends State<Home> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.only(top: 10),
-                child: _actions(user.watchlist),
+                child: _actions(user),
               ),
             ),
             SliverPadding(
@@ -219,9 +221,9 @@ class HomeState extends State<Home> {
                         BuildContext context,
                         int index,
                       ) {
-                        return _partyCard(index, user.parties[index]);
+                        return _partyCard(index, watchParties[index]);
                       },
-                      childCount: user.parties.length,
+                      childCount: watchParties.length,
                     )))
           ],
         ));

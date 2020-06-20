@@ -10,6 +10,7 @@ class Party {
 
   addUserToParty(User user) {
     this.members.add(user);
+    user.addParty(this);
   }
 
   bool userIsMember(inputUser) {

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_night/movie.dart';
+import 'package:movie_night/user.dart';
 
 class Details extends StatefulWidget {
   @override
@@ -8,9 +9,8 @@ class Details extends StatefulWidget {
 }
 
 class DetailsState extends State<Details> {
-
-  _showDialog(BuildContext context) {
-    return showDialog(
+  _showDialog(User user, Movie movie) {
+    showDialog(
         context: context,
         child: CupertinoAlertDialog(
             title: Text("Remove from your watchlist?"),
@@ -24,30 +24,35 @@ class DetailsState extends State<Details> {
               CupertinoDialogAction(
                 textStyle: TextStyle(color: Colors.red),
                 isDefaultAction: true,
-                onPressed: () => _deletelist(context),
+                onPressed: () => _deletelist(user, movie),
                 child: Text("Remove"),
               )
             ]));
   }
+
 //add some sort of deletion in firebase? or pass whole list through?
-  _deletelist(BuildContext context) {
-    return (Navigator.popUntil(context, ModalRoute.withName('/layout')));
+  _deletelist(User user, Movie movie) {
+    user.deleteFromWatchlist(movie);
+    //Navigator.popUntil(context, ModalRoute.withName('/watchlist'));
+    Navigator.pushReplacementNamed(context, '/watchlist', arguments: {"user":user});
   }
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, Movie> rcvdData =
+    final Map<String, Object> rcvdData =
         ModalRoute.of(context).settings.arguments;
 
-    final movie = rcvdData["movie"];
+    Movie movie = rcvdData["movie"];
+    User user = rcvdData["user"];
 
     return Scaffold(
-       appBar: CupertinoNavigationBar(
-          middle: Text(movie.title),
-          trailing: Material( 
+      appBar: CupertinoNavigationBar(
+        middle: Text(movie.title),
+        trailing: Material(
             color: Colors.transparent,
             child: IconButton(
-              icon: Icon(Icons.remove_circle), onPressed: () {})),
+                icon: Icon(Icons.remove_circle),
+                onPressed: () => _showDialog(user, movie))),
       ),
       body: SingleChildScrollView(
           child: Column(
@@ -56,15 +61,18 @@ class DetailsState extends State<Details> {
           Center(
               child: Container(
             padding: EdgeInsets.all(10),
-            child: Text(movie.title, style: Theme.of(context).textTheme.headline4),
+            child:
+                Text(movie.title, style: Theme.of(context).textTheme.headline4),
           )),
           Container(
             padding: EdgeInsets.only(bottom: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                Text(movie.rating, style: Theme.of(context).textTheme.headline5),
-                Text(movie.platforms, style: Theme.of(context).textTheme.headline5),
+                Text(movie.rating,
+                    style: Theme.of(context).textTheme.headline5),
+                Text(movie.platforms,
+                    style: Theme.of(context).textTheme.headline5),
               ],
             ),
           ),

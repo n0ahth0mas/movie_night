@@ -45,7 +45,7 @@ class SplashState extends State<Splash> {
                 color: Colors.purple,
                 child: Text("Login", style: TextStyle(color: Colors.white)),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/home',
+                  Navigator.pushReplacementNamed(context, '/home',
                       arguments: {"user": user, "partyList":partyList});
                 })));
   }

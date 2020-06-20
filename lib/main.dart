@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_night/movieDetails.dart';
@@ -5,10 +6,7 @@ import 'package:movie_night/partyDetails.dart';
 import 'package:movie_night/splash.dart';
 import 'package:movie_night/partyList.dart';
 import 'package:movie_night/watchlist.dart';
-import 'package:movie_night/layout.dart';
 import 'package:movie_night/home.dart';
-import 'package:movie_night/subLayout.dart';
-import 'package:getflutter/getflutter.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,15 +22,28 @@ class MyApp extends StatelessWidget {
               Theme.of(context).textTheme,
             )),
         initialRoute: "/splash",
-        routes: <String, WidgetBuilder>{
-          '/splash' : (BuildContext context) => new Splash(),
-          '/partyList' : (BuildContext context) => new PartyList(),
-          '/watchlist' : (BuildContext context) => new Watchlist(),
-          '/details' : (BuildContext context) => new Details(),
-          '/partyDetails' : (BuildContext context) => new PartyDetails(),
-          '/layout' : (BuildContext context) => new Layout(),
-          '/partyWatchList' : (BuildContext context) => new SubLayout(),
-          '/home' : (BuildContext context) => new Home()
-,        });
+        onGenerateRoute: (RouteSettings settings) {
+          switch (settings.name) {
+            case '/splash':
+              return CupertinoPageRoute(
+                  builder: (_) => Splash(), settings: settings);
+             case '/partyList':
+              return CupertinoPageRoute(
+                  builder: (_) => PartyList(), settings: settings);
+            case '/watchlist':
+              return CupertinoPageRoute(
+                  builder: (_) => Watchlist(), settings: settings);
+            case '/details':
+              return CupertinoPageRoute(
+                  builder: (_) => Details(), settings: settings);
+            case '/partyDetails':
+              return CupertinoPageRoute(
+                  builder: (_) => PartyDetails(), settings: settings);
+            case '/home':
+              return CupertinoPageRoute(
+                  builder: (_) => Home(), settings: settings); 
+          }
+        },
+        );
   }
 }
