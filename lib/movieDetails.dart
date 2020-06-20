@@ -42,17 +42,12 @@ class DetailsState extends State<Details> {
     final movie = rcvdData["movie"];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(movie.title),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.remove_circle,
-              color: Colors.red,
-            ),
-            onPressed: () => _showDialog(context),
-          )
-        ],
+       appBar: CupertinoNavigationBar(
+          middle: Text(movie.title),
+          trailing: Material( 
+            color: Colors.transparent,
+            child: IconButton(
+              icon: Icon(Icons.remove_circle), onPressed: () {})),
       ),
       body: SingleChildScrollView(
           child: Column(

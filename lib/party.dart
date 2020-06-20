@@ -5,8 +5,27 @@ class Party {
   String name;
   List<Movie> watchlist;
   Movie selected;
-  List<User> members;
+  List<User> members = [];
   final String code;
 
-  Party(this.name, this.watchlist, this.selected, this.code);
+  addUserToParty(User user) {
+    this.members.add(user);
+  }
+
+  bool userIsMember(inputUser) {
+    for (var user in members) {
+      if (inputUser == user) return true;
+    }
+    return false;
+  }
+
+  getParty() {
+    return this;
+  }
+
+  Party(this.name, this.code);
+  Party.withUser(this.name, User user, this.code) {
+    this.members.add(user);
+    user.addParty(this);
+  }
 }

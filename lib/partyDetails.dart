@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:movie_night/party.dart';
 
 class PartyDetails extends StatefulWidget {
   @override
@@ -31,13 +33,20 @@ class PartyDetailsState extends State<PartyDetails> {
       "https://i.ya-webdesign.com/images/question-mark-png-clear-background-4.png";
   @override
   Widget build(BuildContext context) {
-    final Map<String, Object> rcvdData =
+    final Map<String, Party> rcvdData =
         ModalRoute.of(context).settings.arguments;
 
+    Party party = rcvdData["party"];
+
     return Scaffold(
-        appBar: AppBar(
-          title: Text("${rcvdData['name']}"),
-        ),
+      appBar: CupertinoNavigationBar(
+          middle: Text(party.name),
+          trailing: Material(
+            color: Colors.transparent,
+            child:  IconButton(
+              icon: Icon(Icons.add_circle), onPressed: (){}),
+        )),
+
         body: SingleChildScrollView(
             child: Column(
           children: <Widget>[

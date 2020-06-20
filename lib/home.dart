@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
+import 'package:movie_night/movie.dart';
+import 'package:movie_night/party.dart';
+import 'package:movie_night/user.dart';
+import 'package:movie_night/watchlist.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -8,23 +12,18 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  final List<Color> colorAccents = [
-    Colors.redAccent,
-    Colors.tealAccent,
-    Colors.orangeAccent,
-    Colors.yellowAccent
-  ];
+  final textController = TextEditingController();
+  final imgs = ["bg1.png", "bg2.png", "bg3.png", "bg4.png"];
 
-  final List<Color> colors = [
-    Colors.red[200],
-    Colors.teal[200],
-    Colors.orange[200],
-    Colors.yellow[200]
-  ];
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
 
-  Widget _actions() {
+  Widget _actions(List<Movie> watchlist) {
     return GFButton(
-      onPressed: () {},
+      onPressed: () => Navigator.pushNamed(context, '/watchlist',
+          arguments: {"watchList": watchlist}),
       text: "View Watchlist",
       shape: GFButtonShape.pills,
       fullWidthButton: true,
@@ -33,8 +32,7 @@ class HomeState extends State<Home> {
     );
   }
 
-  Widget _partyCard(int index) {
-    final imgs = ["bg1.png", "bg2.png", "bg3.png", "bg4.png"];
+  Widget _partyCard(int index, Party party) {
     final result = (index + 1) % 4;
 
     return CupertinoButton(
@@ -43,13 +41,14 @@ class HomeState extends State<Home> {
         width: 200,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/${imgs[result]}"), fit: BoxFit.cover),
+              image: AssetImage("assets/images/${imgs[result]}"),
+              fit: BoxFit.cover),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Container(
-          margin: EdgeInsets.fromLTRB(15, 15, 0, 0),
+          margin: EdgeInsets.fromLTRB(10, 15, 10, 0),
           child: Text(
-            "Mindfulness",
+            party.name,
             style: TextStyle(
               color: Colors.white,
               fontSize: 20,
@@ -58,51 +57,106 @@ class HomeState extends State<Home> {
           ),
         ),
       ),
-      onPressed: () {},
+      onPressed: () => Navigator.pushNamed(context, '/partyDetails',
+          arguments: {"party": party}),
     );
   }
-/*
-  Widget _partyCard(int index) {
-    int colorIndex = (index + 1) % 4;
-    return GestureDetector(
-        onTap: () => print("ooo"),
-        child: Card(
-            margin: EdgeInsets.all(10),
-            elevation: 5,
-            shadowColor: colorAccents[colorIndex],
-            color: colors[colorIndex],
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-            child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  children: <Widget>[
-                    Text("Name of group is this",
-                        style: TextStyle(
-                          fontSize: 20,
-                        )),
-                  ],
-                )))
-        );
-  }
-  */
 
-  _actionPrompt() {
+  _joinPartyDialogPopup(User user) {
+    showDialog(
+        context: context,
+        child: CupertinoAlertDialog(
+            title: Column(
+              children: <Widget>[
+                Text("Join Party"),
+                Padding(
+                    padding: EdgeInsets.fromLTRB(1, 10, 1, 2),
+                    child: CupertinoTextField(
+                      controller: textController,
+                      autocorrect: false,
+                      clearButtonMode: OverlayVisibilityMode.editing,
+                      placeholder: "Enter Party Code",
+                    )),
+              ],
+            ),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                isDefaultAction: true,
+                onPressed: () =>
+                    Navigator.of(context, rootNavigator: true).pop(),
+                child: Text("Cancel"),
+              ),
+              CupertinoDialogAction(
+                onPressed: () => _joinparty(user, textController.text),
+                child: Text("Submit"),
+              ),
+            ]));
+  }
+
+  _newPartyDialog(User user) {
+    showDialog(
+        context: context,
+        child: CupertinoAlertDialog(
+            title: Column(
+              children: <Widget>[
+                Text("Create Party"),
+                Padding(
+                    padding: EdgeInsets.fromLTRB(1, 10, 1, 2),
+                    child: CupertinoTextField(
+                      controller: textController,
+                      autocorrect: false,
+                      clearButtonMode: OverlayVisibilityMode.editing,
+                      placeholder: "Enter Name of New Party",
+                    )),
+              ],
+            ),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                isDefaultAction: true,
+                onPressed: () =>
+                    Navigator.of(context, rootNavigator: true).pop(),
+                child: Text("Cancel"),
+              ),
+              CupertinoDialogAction(
+                onPressed: () => _createParty(user, textController.text),
+                child: Text("Create"),
+              ),
+            ]));
+  }
+
+  //add more functionality with a more defined system
+  _joinparty(User user, String code) {
+    print(code);
+    Navigator.of(context).pop();
+    textController.clear();
+  }
+
+  //important -> next thing to do is to learn about state, and update state when a party is created
+  _createParty(User user, String name) {
+    Party.withUser(name, user, "abc");
+    for (var party in user.parties) {
+      print(party.name);
+    }
+    Navigator.of(context).pop();
+    textController.clear();
+  }
+
+  _actionPrompt(User user) {
     final action = CupertinoActionSheet(
       actions: <Widget>[
         CupertinoActionSheetAction(
-          child: Text("Create New Party"),
-          isDefaultAction: true,
-          onPressed: () {
-            print("Action 1 is been clicked");
-          },
-        ),
+            child: Text("Create New Party"),
+            isDefaultAction: true,
+            onPressed: () => {
+                  Navigator.pop(context),
+                  _newPartyDialog(user),
+                }),
         CupertinoActionSheetAction(
-          child: Text("Join Party"),
-          onPressed: () {
-            print("Action 2 is been clicked");
-          },
-        )
+            child: Text("Join Party"),
+            onPressed: () => {
+                  Navigator.pop(context),
+                  _joinPartyDialogPopup(user),
+                })
       ],
       cancelButton: CupertinoActionSheetAction(
         child: Text("Cancel"),
@@ -113,17 +167,37 @@ class HomeState extends State<Home> {
     );
     showCupertinoModalPopup(context: context, builder: (context) => action);
   }
+ /*
+  List<Party> _userParties(User user, List<Party> partyList) {
+    List<Party> memberList = [];
+    for (var party in partyList) {
+      if (party.userIsMember(user)) {
+        memberList.add(party);
+      }
+    }
+    return memberList;
+  }
+  */
 
   @override
   Widget build(BuildContext context) {
+    final Map<String, Object> rcvdData =
+        ModalRoute.of(context).settings.arguments;
+
+    User user = rcvdData["user"];
+    //List<Party> partyList = _userParties(user, rcvdData["partyList"]);
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: CupertinoNavigationBar(
           middle: FlutterLogo(
             size: 30,
           ),
-          trailing: IconButton(
-              icon: Icon(Icons.add_circle), onPressed: () => _actionPrompt()),
+          trailing: Material(
+              color: Colors.transparent,
+              child: IconButton(
+                  icon: Icon(Icons.add_circle),
+                  onPressed: () => _actionPrompt(user))),
           automaticallyImplyLeading: false,
         ),
         body: CustomScrollView(
@@ -132,7 +206,7 @@ class HomeState extends State<Home> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.only(top: 10),
-                child: _actions(),
+                child: _actions(user.watchlist),
               ),
             ),
             SliverPadding(
@@ -141,10 +215,13 @@ class HomeState extends State<Home> {
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2),
                     delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                        return _partyCard(index);
+                      (
+                        BuildContext context,
+                        int index,
+                      ) {
+                        return _partyCard(index, user.parties[index]);
                       },
-                      childCount: 4,
+                      childCount: user.parties.length,
                     )))
           ],
         ));

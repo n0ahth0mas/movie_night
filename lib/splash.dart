@@ -25,13 +25,17 @@ class SplashState extends State<Splash> {
       "platform",
     )
   ];
-  
-  var party = Party("my party", null, null, "abc");
-  
 
   @override
   Widget build(BuildContext context) {
-    var user = new User("Noah", movieList, [party]);
+    var user = new User("Noah", movieList);
+
+    var party = Party.withUser("My First Party", user, "abc");
+    var party2 = Party.withUser("My Second Party", user, "abc");
+    var party3 = Party.withUser("My Third Party", user, "abc");
+    var party4 = Party.withUser("My Fourth Party", user, "abc");
+
+    var partyList = [party, party2, party3, party4];
 
     return Scaffold(
         body: Center(
@@ -42,7 +46,7 @@ class SplashState extends State<Splash> {
                 child: Text("Login", style: TextStyle(color: Colors.white)),
                 onPressed: () {
                   Navigator.pushNamed(context, '/home',
-                      arguments: {"user": user});
+                      arguments: {"user": user, "partyList":partyList});
                 })));
   }
 }
