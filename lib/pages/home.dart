@@ -212,7 +212,7 @@ class HomeState extends State<Home> {
               trailing:Material(
               color: Colors.transparent,
               child: IconButton(
-                  icon: Icon(Icons.add_circle),
+                  icon: Icon(CupertinoIcons.plus_circled),
                   color: Colors.blue,
                   onPressed: () => _actionPrompt(user))),
           automaticallyImplyLeading: false,

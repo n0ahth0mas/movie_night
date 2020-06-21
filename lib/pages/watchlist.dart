@@ -38,6 +38,14 @@ class WatchlistState extends State<Watchlist> {
       arguments: {"user": user, "movie": movie},
     );
   }
+  
+  _searchPage(User user) {
+    Navigator.pushNamed(
+      context,
+      "/search",
+      arguments: {"user": user,},
+    );
+  }
 
   _addToList(User user, int id) {
     user.addToWatchList(id);
@@ -61,25 +69,23 @@ class WatchlistState extends State<Watchlist> {
     _refreshWatchList(user);
 
     return Scaffold(
-      /*
-        appBar: CupertinoNavigationBar(
-            largeText: Text("My Watchlist"),
-            trailing: Material(
-              color: Colors.transparent,
-              child: IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () => _addToList(user, sampleMovieId)),
-            )), */
         body: CustomScrollView(
           primary: false,
           slivers: <Widget>[
             CupertinoSliverNavigationBar(
+              automaticallyImplyLeading: false,
+              leading: Material(
+                color: Colors.transparent,
+                child: IconButton(
+                  icon: Icon(CupertinoIcons.back),
+                  onPressed: () => Navigator.pop(context),
+              )),
               largeTitle: Text("My Watchlist"),
               trailing: Material(
               color: Colors.transparent,
               child: IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () => _addToList(user, sampleMovieId))),
+                  icon: Icon(CupertinoIcons.search),
+                  onPressed: () => _searchPage(user))),
             ),
              SliverGrid(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

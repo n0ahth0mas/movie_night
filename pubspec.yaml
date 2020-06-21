@@ -27,6 +27,7 @@ dependencies:
   image_ink_well: ^0.1.0
   flutter_speed_dial: ^1.2.5
   getflutter: ^1.0.11
+  flappy_search_bar: ^1.4.1
 
 
   # The following adds the Cupertino Icons font to your application.
