@@ -53,7 +53,7 @@ class DetailsState extends State<Details> {
 
   _backdrop(String link) {
     if (link != null) {
-      return Image.network("http://image.tmdb.org/t/p/w780/${link}");
+      return Image.network("http://image.tmdb.org/t/p/w780/$link");
     }
   }
 

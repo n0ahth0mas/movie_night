@@ -42,6 +42,9 @@ class MyApp extends StatelessWidget {
             case '/home':
               return CupertinoPageRoute(
                   builder: (_) => Home(), settings: settings); 
+            default:
+              return CupertinoPageRoute(
+                  builder: (_) => Home(), settings: settings);
           }
         },
         );

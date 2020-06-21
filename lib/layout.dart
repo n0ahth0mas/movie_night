@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_night/partyList.dart';
-import 'package:movie_night/user.dart';
 import 'package:movie_night/watchlist.dart';
 
 class Layout extends StatefulWidget {
@@ -13,10 +12,6 @@ class LayoutState extends State<Layout> {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, User> rcvdData =
-        ModalRoute.of(context).settings.arguments;
-
-    User user = rcvdData["user"];
     
     final List<Widget> _section = [
       PartyList(),

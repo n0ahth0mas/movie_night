@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
-import 'package:movie_night/movie.dart';
 import 'package:movie_night/party.dart';
 import 'package:movie_night/user.dart';
-import 'package:movie_night/watchlist.dart';
 
 class Home extends StatefulWidget {
   @override
