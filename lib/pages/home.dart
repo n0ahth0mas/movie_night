@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
-import 'package:movie_night/party.dart';
-import 'package:movie_night/user.dart';
+import 'package:movie_night/objects/party.dart';
+import 'package:movie_night/objects/user.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -27,7 +27,7 @@ class HomeState extends State<Home> {
       shape: GFButtonShape.pills,
       fullWidthButton: true,
       size: GFSize.LARGE,
-      color: GFColors.INFO,
+      color: Colors.blue,
     );
   }
 
@@ -192,6 +192,7 @@ class HomeState extends State<Home> {
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
+        /*
         appBar: CupertinoNavigationBar(
           middle: FlutterLogo(
             size: 30,
@@ -201,11 +202,21 @@ class HomeState extends State<Home> {
               child: IconButton(
                   icon: Icon(Icons.add_circle),
                   onPressed: () => _actionPrompt(user))),
-          automaticallyImplyLeading: false,
-        ),
+          automaticallyImplyLeading: false, 
+        ),*/
         body: CustomScrollView(
           primary: false,
           slivers: <Widget>[
+            CupertinoSliverNavigationBar(
+              largeTitle: Text("My Watchparties"),
+              trailing:Material(
+              color: Colors.transparent,
+              child: IconButton(
+                  icon: Icon(Icons.add_circle),
+                  color: Colors.blue,
+                  onPressed: () => _actionPrompt(user))),
+          automaticallyImplyLeading: false,
+            ),
             SliverToBoxAdapter(
               child: Padding(
                 padding: EdgeInsets.only(top: 10),

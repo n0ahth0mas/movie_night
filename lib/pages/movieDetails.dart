@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:getflutter/getflutter.dart';
-import 'package:movie_night/movie.dart';
-import 'package:movie_night/user.dart';
+import 'package:movie_night/objects/movie.dart';
+import 'package:movie_night/objects/user.dart';
 
 class Details extends StatefulWidget {
   @override
@@ -66,16 +66,19 @@ class DetailsState extends State<Details> {
     User user = rcvdData["user"];
 
     return Scaffold(
-      appBar: CupertinoNavigationBar(
-          middle: Text(movie.title),
-          trailing: Material(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          CupertinoSliverNavigationBar(
+            largeTitle: Text(movie.title),
+            trailing: Material(
             color: Colors.transparent,
             child: IconButton(
                 icon: Icon(Icons.remove_circle),
-                onPressed: () => _showDialog(user, movie.id)),
-          )),
-      body: SingleChildScrollView(
-          child: Column(
+                color: Colors.blue,
+                onPressed: () => _showDialog(user, movie.id))),
+          ),
+          SliverToBoxAdapter(
+            child: Column(
         children: <Widget>[
           Padding(padding: EdgeInsets.only(top: 20)),
           Center(child: Image.network(movie.getPoster(342))),
@@ -85,7 +88,10 @@ class DetailsState extends State<Details> {
             child: Center(
                 child: Text(movie.title,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline4)),
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w800
+                    ))),
           )),
           Container(
             padding: EdgeInsets.only(bottom: 10),
@@ -102,7 +108,9 @@ class DetailsState extends State<Details> {
             child: Text(movie.overview),),
           _backdrop(movie.backdropPath)
         ],
-      )),
-    );
+          ))
+        ],
+      ),
+    ); 
   }
 }

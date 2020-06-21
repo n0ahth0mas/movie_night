@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/watchlist.dart';
+import 'package:movie_night/pages/watchlist.dart';
 
 class SubLayout extends StatefulWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:async';
-import 'package:movie_night/movie.dart';
-import 'package:movie_night/secret.dart';
+import 'package:movie_night/objects/movie.dart';
+import 'package:movie_night/objects/secret.dart';
 
 Secret secret = Secret();
 

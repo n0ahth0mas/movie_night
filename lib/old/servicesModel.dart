@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:io';
-import 'package:movie_night/model.dart';
+import 'package:movie_night/old/model.dart';
 
 String url = 'https://jsonplaceholder.typicode.com/posts';
 

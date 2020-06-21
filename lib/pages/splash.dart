@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/party.dart';
-import 'package:movie_night/user.dart';
+import 'package:movie_night/objects/party.dart';
+import 'package:movie_night/objects/user.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -8,12 +8,13 @@ class Splash extends StatefulWidget {
 }
 
 class SplashState extends State<Splash> {
-  List<int> movieList = [
-    496243, 122917
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+     List<int> movieList = [
+    496243, 122917
+    ];
     var user = new User("Noah", movieList);
 
     var party = Party.withUser("My First Party", user, "abc");

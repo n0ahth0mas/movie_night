@@ -1,4 +1,4 @@
-import 'package:movie_night/party.dart';
+import 'package:movie_night/objects/party.dart';
 
 class User {
   String name;
