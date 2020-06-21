@@ -1,22 +1,21 @@
-import 'package:movie_night/movie.dart';
 import 'package:movie_night/party.dart';
 
 class User {
   String name;
-  List<Movie> watchlist = [];
+  List<int> watchlistId = [];
   List<Party> parties = [];
 
   addParty(Party party) {
     this.parties.add(party);
   }
 
-  deleteFromWatchlist(Movie movie) {
-    watchlist.remove(movie);
+  deleteFromWatchlist(int id) {
+    watchlistId.remove(id);
   }
   
-  addToWatchList(Movie movie) {
-    watchlist.add(movie);
+  addToWatchList(int id) {
+    watchlistId.add(id);
   }
 
-  User(this.name, this.watchlist);
+  User(this.name, this.watchlistId);
 }

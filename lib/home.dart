@@ -62,6 +62,7 @@ class HomeState extends State<Home> {
           arguments: {"party": party}),
     );
   }
+  
 
   _joinPartyDialogPopup(User user) {
     showDialog(
