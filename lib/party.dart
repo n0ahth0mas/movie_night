@@ -6,6 +6,7 @@ class Party {
   List<Movie> watchlist;
   Movie selected;
   List<User> members = [];
+  List<User> admin = [];
   final String code;
 
   addUserToParty(User user) {
@@ -13,20 +14,19 @@ class Party {
     user.addParty(this);
   }
 
-  bool userIsMember(inputUser) {
-    for (var user in members) {
-      if (inputUser == user) return true;
-    }
-    return false;
+  bool userIsMember(User user) {
+    return members.contains(user);
   }
 
-  getParty() {
-    return this;
+  bool isAdmin(User user) {
+    return members.contains(user);
   }
 
   Party(this.name, this.code);
+
   Party.withUser(this.name, User user, this.code) {
     this.members.add(user);
+    admin.add(user);
     user.addParty(this);
   }
 }

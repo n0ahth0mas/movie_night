@@ -33,7 +33,7 @@ class HomeState extends State<Home> {
     );
   }
 
-  Widget _partyCard(int index, Party party) {
+  Widget _partyCard(int index, Party party, User user) {
     final result = (index + 1) % 4;
 
     return CupertinoButton(
@@ -59,7 +59,7 @@ class HomeState extends State<Home> {
         ),
       ),
       onPressed: () => Navigator.pushNamed(context, '/partyDetails',
-          arguments: {"party": party}),
+          arguments: {"party": party, "user":user}),
     );
   }
   
@@ -107,6 +107,8 @@ class HomeState extends State<Home> {
                     child: CupertinoTextField(
                       controller: textController,
                       autocorrect: false,
+                      maxLength: 24,
+                      maxLengthEnforced: true,
                       clearButtonMode: OverlayVisibilityMode.editing,
                       placeholder: "Enter Name of New Party",
                     )),
@@ -222,7 +224,7 @@ class HomeState extends State<Home> {
                         BuildContext context,
                         int index,
                       ) {
-                        return _partyCard(index, watchParties[index]);
+                        return _partyCard(index, watchParties[index], user);
                       },
                       childCount: watchParties.length,
                     )))
