@@ -208,7 +208,7 @@ class HomeState extends State<Home> {
           primary: false,
           slivers: <Widget>[
             CupertinoSliverNavigationBar(
-              largeTitle: Text("My Watchparties"),
+              largeTitle: Text("My Watch Parties"),
               trailing:Material(
               color: Colors.transparent,
               child: IconButton(

@@ -7,7 +7,10 @@ import 'package:movie_night/objects/user.dart';
 class Watchlist extends StatefulWidget {
   @override
   WatchlistState createState() => WatchlistState();
+  
 }
+
+
 
 class WatchlistState extends State<Watchlist> {
   List<int> watchList;
@@ -47,11 +50,6 @@ class WatchlistState extends State<Watchlist> {
     );
   }
 
-  _addToList(User user, int id) {
-    user.addToWatchList(id);
-    _refreshWatchList(user);
-  }
-
   _refreshWatchList(User user) {
     setState(() {
       watchList = user.watchlistId;
@@ -73,18 +71,11 @@ class WatchlistState extends State<Watchlist> {
           primary: false,
           slivers: <Widget>[
             CupertinoSliverNavigationBar(
-              automaticallyImplyLeading: false,
-              leading: Material(
-                color: Colors.transparent,
-                child: IconButton(
-                  icon: Icon(CupertinoIcons.back),
-                  onPressed: () => Navigator.pop(context),
-              )),
               largeTitle: Text("My Watchlist"),
               trailing: Material(
               color: Colors.transparent,
               child: IconButton(
-                  icon: Icon(CupertinoIcons.search),
+                  icon: Icon(CupertinoIcons.add_circled_solid),
                   onPressed: () => _searchPage(user))),
             ),
              SliverGrid(

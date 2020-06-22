@@ -4,14 +4,21 @@
 
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 Movie movieFromJson(String str) => Movie.fromJson(json.decode(str));
 
 String movieToJson(Movie data) => json.encode(data.toJson());
 
 class Movie {
+  
   String getPoster(int width) {
-    return "http://image.tmdb.org/t/p/w$width/${this.posterPath}";
+    if (this.posterPath != null) {
+      return "http://image.tmdb.org/t/p/w$width/${this.posterPath.replaceAll('\\', "")}";
+    } else
+      return "transparenttextures.com/patterns/asfalt-light.png";
   }
+  
   /*
   String getId(){
     return this.id.toString();

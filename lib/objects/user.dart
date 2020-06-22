@@ -1,3 +1,4 @@
+import 'package:movie_night/objects/movie.dart';
 import 'package:movie_night/objects/party.dart';
 
 class User {
@@ -12,9 +13,13 @@ class User {
   deleteFromWatchlist(int id) {
     watchlistId.remove(id);
   }
-  
+
   addToWatchList(int id) {
     watchlistId.add(id);
+  }
+
+  bool inWatchlist(Movie movie) {
+    return (watchlistId.contains(movie.id));
   }
 
   User(this.name, this.watchlistId);
