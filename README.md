@@ -7,6 +7,8 @@ To practice code and continue learning post grad, I'm teaching myself Flutter. I
  - [Steps Towards Completion](#comp)
  - [App Overview](#overview)
  - [UI Sketches](#sketch)
+ - [Flexible Model & API Integration](#flex)
+
 
 <a name="comp">
 
@@ -49,3 +51,19 @@ The second round of sketches were made to revamp the user's home page based on a
 | Results & Details | Profile |
 | ------------- | ------------- |
 | ![Results & Details ](readmeImgs/v13.png) | ![ Profile](readmeImgs/v14.png)|
+
+<a name="flex">
+
+## Flexible Model & API Integration
+
+</a>
+
+While very first version of this app followed the UI sketches, the second version adapted these sketches into a more user-friendly fashion. After creating a hard coded version of the application, I gave it a test run with real users. I took their notes into account, and, while connecting the app to the API, make structural changes to highlight watch parties through better visual representation.
+
+| Home Screen | Party Details (needs complete overhaul) |
+| ------------- | ------------- |
+| ![Home Screen ](readmeImgs/current1.png) | ![ Party Details](readmeImgs/current2.png)|
+
+| User Watchlist | Movie Details| Search|
+| ------------- | ------------- |------------- |
+| ![User Watchlist ](readmeImgs/current3.png) | ![ Movie Details](readmeImgs/current4.png)| ![ Search](readmeImgs/current5.png)|
