@@ -24,4 +24,4 @@ There were two phases of UI sketches. The first phase covers the overall structu
 
 | Homecook Splash Screen  | Favorited Recipes |
 | ------------- | ------------- |
-| ![Homecook Splash Screen](readmeImgs/v11.png) | ![Favorited Recipes](readmeImgs/v12.png)  |
+| ![Homecook Splash Screen](readmeImgs/newv11.png) | ![Favorited Recipes](readmeImgs/v12.png)  |
