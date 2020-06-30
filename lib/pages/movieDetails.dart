@@ -12,6 +12,7 @@ class Details extends StatefulWidget {
 }
 
 class DetailsState extends State<Details> {
+
   _showDialog(User user, int id, bool inWatchlist) {
     if (inWatchlist) {
       showDialog(

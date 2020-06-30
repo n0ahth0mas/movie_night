@@ -15,9 +15,9 @@ class Watchlist extends StatefulWidget {
 class WatchlistState extends State<Watchlist> {
   List<int> watchList;
 
-  int sampleMovieId = 508439;
-
   User user;
+  
+  
 
   Widget _createMovieCard(user, int movieId) {
     return Container(

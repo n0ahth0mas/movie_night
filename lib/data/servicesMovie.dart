@@ -18,6 +18,14 @@ Future<Movie> getMovie(String code) async {
   }
 }
 
+Future<List<Movie>> getMovieList(List<String> codeList) async {
+  var moviesList = [];
+  for (var code in codeList) {
+    moviesList.add(getMovie(code));
+  }
+  return moviesList;
+}
+
 Future<List<Result>> getMovieListFromName(String name) async {
   await Future.delayed(Duration(seconds: 2));
 

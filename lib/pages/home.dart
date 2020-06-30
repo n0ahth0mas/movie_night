@@ -10,6 +10,8 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
+
+
   final textController = TextEditingController();
   final imgs = ["bg1.png", "bg2.png", "bg3.png", "bg4.png"];
   List<Party> watchParties;
@@ -21,8 +23,8 @@ class HomeState extends State<Home> {
 
   Widget _actions(User user) {
     return GFButton(
-      onPressed: () => Navigator.pushNamed(context, '/watchlist',
-          arguments: {"user": user}),
+      onPressed: () =>
+          Navigator.pushNamed(context, '/watchlist', arguments: {"user": user}),
       text: "View Watchlist",
       shape: GFButtonShape.pills,
       fullWidthButton: true,
@@ -57,10 +59,9 @@ class HomeState extends State<Home> {
         ),
       ),
       onPressed: () => Navigator.pushNamed(context, '/partyDetails',
-          arguments: {"party": party, "user":user}),
+          arguments: {"party": party, "user": user}),
     );
   }
-  
 
   _joinPartyDialogPopup(User user) {
     showDialog(
@@ -209,13 +210,13 @@ class HomeState extends State<Home> {
           slivers: <Widget>[
             CupertinoSliverNavigationBar(
               largeTitle: Text("My Watch Parties"),
-              trailing:Material(
-              color: Colors.transparent,
-              child: IconButton(
-                  icon: Icon(CupertinoIcons.plus_circled),
-                  color: Colors.blue,
-                  onPressed: () => _actionPrompt(user))),
-          automaticallyImplyLeading: false,
+              trailing: Material(
+                  color: Colors.transparent,
+                  child: IconButton(
+                      icon: Icon(CupertinoIcons.plus_circled),
+                      color: Colors.blue,
+                      onPressed: () => _actionPrompt(user))),
+              automaticallyImplyLeading: false,
             ),
             SliverToBoxAdapter(
               child: Padding(
