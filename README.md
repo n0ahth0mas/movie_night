@@ -22,6 +22,6 @@ In order to make a well designed app, it is important to properly sketch the UI 
 
 There were two phases of UI sketches. The first phase covers the overall structure and flow of the app.
 
-| Homecook Splash Screen  | Favorited Recipes |
+| Login & Landing  | Party Page & Watchlist Variations |
 | ------------- | ------------- |
-| ![Homecook Splash Screen](readmeImgs/newv11.png) | ![Favorited Recipes](readmeImgs/v12.png)  |
+| ![Login & Landing ](readmeImgs/newv11.png) | ![ Party Page & Watchlist Variations](readmeImgs/v12.png)  |
