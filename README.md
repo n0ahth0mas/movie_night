@@ -1,6 +1,6 @@
 # MovieNight
 
-To practice code and continue learning post grad, I'm teaching myself Flutter. I took a [mobile development course](https://github.com/n0ahth0mas/AIT_ANDROID) two semesters ago that focused on Android development with Kotlin, and I wanted to take this interest one step further with Flutter. I'll be updating this as I progress through the creation process.
+To practice code and continue learning post grad, I'm teaching myself Flutter. I took a [mobile development course](https://github.com/n0ahth0mas/AIT_ANDROID) two semesters ago that focused on Android development with Kotlin, and I wanted to take this interest one step further with Flutter. I'll be updating this as I progress through the creation of this application.
 
 ## Contents
 
@@ -8,6 +8,11 @@ To practice code and continue learning post grad, I'm teaching myself Flutter. I
  - [App Overview](#overview)
  - [UI Sketches](#sketch)
  - [Flexible Model & API Integration](#flex)
+ - [Next Steps](#next)
+ - [Made With](#made)
+ - [Creator](#create)
+
+
 
 
 <a name="comp">
@@ -30,7 +35,7 @@ To practice code and continue learning post grad, I'm teaching myself Flutter. I
 
 </a>
 
-I've found that my friends and I often want to watch a movie together but spend more time trying to figure out what to watch than watching it. To solve this, I decided to create an app that allows users to create their own watchlists and watch parties. While watchlists are for single users only, watch parties are groups of users. Once users in a watch party are ready, the party host can press a button to randomly select a movie from the unified watchlists of the party members. I plan on adding more selection modes than random, such as filtering and ranking based on amount of watchlists a movie is in. This app will also have data saved to Firebase in order to allow users make parties with multiple watchlists.
+I've found that my friends and I often want to watch movies together but spend more time trying to figure out what to watch than watching it. To solve this, I decided to create an app that allows users to create their own watchlists and watch parties. While watchlists are for single users only, watch parties are groups of users. Once users in a watch party are ready, the party host can press a button to randomly select a movie from the unified watchlists of the party members. I plan on adding more selection modes than random, such as filtering and ranking based on amount of watchlists a movie is in. This app will also have data saved to Firebase in order to allow users make parties with multiple watchlists.
 
 <a name="sketch">
 
@@ -58,7 +63,7 @@ The second round of sketches were made to revamp the user's home page based on a
 
 </a>
 
-While very first version of this app followed the UI sketches, the second version adapted these sketches into a more user-friendly fashion. After creating a hard coded version of the application, I gave it a test run with real users. I took their notes into account, and, while connecting the app to the API, make structural changes to highlight watch parties through better visual representation.
+While very first version of this app followed the UI sketches, the second version adapted these sketches into a more user-friendly fashion. After creating a hard coded version of the application, I gave it a test run with real users. I took their notes into account, and, while connecting the app to the API, made structural changes to highlight watch parties through better visual representation.
 
 | Home Screen | Party Details (needs complete overhaul) |
 | ------------- | ------------- |
@@ -67,3 +72,36 @@ While very first version of this app followed the UI sketches, the second versio
 | User Watchlist | Movie Details| Search|
 | ------------- | ------------- |------------- |
 | ![User Watchlist ](readmeImgs/current3.png) | ![ Movie Details](readmeImgs/current4.png)| ![ Search](readmeImgs/current5.png)|
+
+<a name="next">
+
+## Next Steps
+
+</a>
+
+The next steps for this project are to:
+  - sync data across the app better
+  - finalize API connections
+  - complete UI
+  - connect to Firebase
+  - test with users
+  - deploy
+
+I'll be updating this page regularly when I make more progress!
+
+<a name="made">
+
+## Made With
+</a>
+
+- [Flutter](https://flutter.dev/) - language to create cross platform apps
+- [the MovieDB](https://www.themoviedb.org/) - API that app is pulling all movie data from
+- [Firebase](https://firebase.google.com/) - hosting user data on the cloud
+
+<a name = "create">
+
+## Creator
+
+</a>
+
+Created by (Noah Thomas)[http://noahthom.com], Summer 2020.
