@@ -104,4 +104,4 @@ I'll be updating this page regularly when I make more progress!
 
 </a>
 
-Created by (Noah Thomas)[http://noahthom.com], Summer 2020.
+Created by [Noah Thomas](http://noahthom.com), Summer 2020.
