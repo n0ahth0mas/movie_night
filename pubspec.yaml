@@ -27,6 +27,8 @@ dependencies:
   getflutter: ^1.0.11
   flappy_search_bar: ^1.4.1
   provider: ^3.1.0
+  get_it: ^4.0.2
+  http: ^0.12.1
 
 
 
