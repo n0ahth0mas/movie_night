@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:getflutter/getflutter.dart';
-import 'package:movie_night/objects/party.dart';
-import 'package:movie_night/objects/user.dart';
+import 'package:movie_night/core/models/party.dart';
+import 'package:movie_night/core/models/user.dart';
+
 
 class Home extends StatefulWidget {
   @override

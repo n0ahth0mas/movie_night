@@ -2,10 +2,10 @@ import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flappy_search_bar/search_bar_style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_night/objects/movie.dart';
-import 'package:movie_night/data/servicesMovie.dart';
-import 'package:movie_night/objects/movieList.dart';
-import 'package:movie_night/objects/user.dart';
+import 'package:movie_night/core/models/movie.dart';
+import 'package:movie_night/core/models/movieList.dart';
+import 'package:movie_night/core/models/user.dart';
+import 'package:movie_night/core/services/servicesMovie.dart';
 
 class SearchPage extends StatefulWidget {
   @override

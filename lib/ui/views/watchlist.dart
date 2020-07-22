@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_night/objects/movie.dart';
-import 'package:movie_night/data/servicesMovie.dart';
-import 'package:movie_night/objects/user.dart';
+import 'package:movie_night/core/models/movie.dart';
+import 'package:movie_night/core/models/user.dart';
+import 'package:movie_night/core/services/servicesMovie.dart';
 
 class Watchlist extends StatefulWidget {
   @override

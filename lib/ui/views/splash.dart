@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/objects/party.dart';
-import 'package:movie_night/objects/user.dart';
-
+import 'package:movie_night/core/models/party.dart';
+import 'package:movie_night/core/models/user.dart';
 class Splash extends StatefulWidget {
   @override
   SplashState createState() => SplashState();

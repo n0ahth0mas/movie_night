@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_night/pages/partyList.dart';
-import 'package:movie_night/pages/watchlist.dart';
+import 'package:movie_night/ui/views/partyList.dart';
+import 'package:movie_night/ui/views/watchlist.dart';
 
 class Layout extends StatefulWidget {
   @override

@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movie_night/pages/movieDetails.dart';
-import 'package:movie_night/pages/partyDetails.dart';
-import 'package:movie_night/pages/searchPage.dart';
-import 'package:movie_night/pages/splash.dart';
-import 'package:movie_night/pages/partyList.dart';
-import 'package:movie_night/pages/watchlist.dart';
-import 'package:movie_night/pages/home.dart';
+import 'package:movie_night/ui/views/home.dart';
+import 'package:movie_night/ui/views/movieDetails.dart';
+import 'package:movie_night/ui/views/partyDetails.dart';
+import 'package:movie_night/ui/views/partyList.dart';
+import 'package:movie_night/ui/views/searchPage.dart';
+import 'package:movie_night/ui/views/splash.dart';
+import 'package:movie_night/ui/views/watchlist.dart';
 
 void main() => runApp(MyApp());
 

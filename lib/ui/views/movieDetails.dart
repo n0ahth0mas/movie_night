@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:getflutter/getflutter.dart';
-import 'package:movie_night/objects/movie.dart';
-import 'package:movie_night/objects/user.dart';
-import 'package:movie_night/pages/watchlist.dart';
+import 'package:movie_night/core/models/movie.dart';
+import 'package:movie_night/core/models/user.dart';
+
 
 class Details extends StatefulWidget {
   @override
