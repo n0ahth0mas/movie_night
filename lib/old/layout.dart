@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:movie_night/ui/views/partyList.dart';
 import 'package:movie_night/ui/views/watchlist.dart';
@@ -54,3 +55,4 @@ class LayoutState extends State<Layout> {
     });
   }
 }
+*/

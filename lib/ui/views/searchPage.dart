@@ -5,18 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:movie_night/core/models/movie.dart';
 import 'package:movie_night/core/models/movieList.dart';
 import 'package:movie_night/core/models/user.dart';
-import 'package:movie_night/core/services/servicesMovie.dart';
+import 'package:movie_night/core/services/api.dart';
 
+/*
 class SearchPage extends StatefulWidget {
   @override
   SearchPageState createState() => SearchPageState();
-}
-
-class Post {
-  final String title;
-  final String description;
-
-  Post(this.title, this.description);
 }
 
 class SearchPageState extends State<SearchPage> {
@@ -25,6 +19,8 @@ class SearchPageState extends State<SearchPage> {
   int sampleMovieId = 508439;
 
   User user;
+
+  Api _api = new Api();
 
   _getInfo(User user, Movie movie) {
     Navigator.pushNamed(
@@ -56,19 +52,20 @@ class SearchPageState extends State<SearchPage> {
     _refreshWatchList(user);
 
     Future<List<Result>> search(String search) async {
-      return getMovieListFromName(search.toString());
+      return _api.getMovieListFromName(search.toString());
     }
 
     _leadImg(Movie movie) {
-      if (movie.posterPath != null) return Image.network(movie.getPoster(154));
+      if (movie.posterPath != null)
+        return Image.network(movie.getPoster(154));
       else
-      return Image.asset("assets/images/transparent.png");
+        return Image.asset("assets/images/transparent.png");
     }
 
     Widget _createListItem(user, int movieId) {
       return Container(
           child: FutureBuilder<Movie>(
-              future: getMovie(movieId.toString()),
+              future: _api.getMovie(movieId.toString()),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
                   return CupertinoButton(
@@ -133,4 +130,4 @@ class SearchPageState extends State<SearchPage> {
       ),
     );
   }
-}
+}*/
