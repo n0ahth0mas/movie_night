@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/material.dart';
 import 'package:movie_night/core/models/party.dart';
 import 'package:movie_night/core/models/user.dart';
@@ -15,7 +16,7 @@ class SplashState extends State<Splash> {
     496243, 122917
     ];
     var user = new User("Noah", movieList);
-
+    
     var party = Party.withUser("My First Party", user, "abc");
     var party2 = Party.withUser("My Second Party", user, "abc");
     var party3 = Party.withUser("My Third Party", user, "abc");
@@ -36,4 +37,4 @@ class SplashState extends State<Splash> {
               } 
     )));
   }
-}
+}*/

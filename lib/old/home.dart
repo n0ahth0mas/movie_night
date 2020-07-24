@@ -194,18 +194,6 @@ class HomeState extends State<Home> {
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        /*
-        appBar: CupertinoNavigationBar(
-          middle: FlutterLogo(
-            size: 30,
-          ),
-          trailing: Material(
-              color: Colors.transparent,
-              child: IconButton(
-                  icon: Icon(Icons.add_circle),
-                  onPressed: () => _actionPrompt(user))),
-          automaticallyImplyLeading: false, 
-        ),*/
         body: CustomScrollView(
           primary: false,
           slivers: <Widget>[
